@@ -12,6 +12,7 @@ period = 1.0
 GPIO.setup(led, GPIO.OUT)
 GPIO.setup(button, GPIO.IN)
 
+
 while True:
     if GPIO.input(button):
         if state == 1:
