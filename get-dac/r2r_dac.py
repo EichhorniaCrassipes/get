@@ -13,19 +13,33 @@ class R2R_DAC:
         GPIO.output(self.gpio_bits, 0)
         GPIO.cleanup()
 
-def set_number(self, number):
-    if not (0 <= number <= 255):
-        return 0
-    bin_from_dec = [int(element) for element in bin(number)[2:].zfill(8)]
-    for i in range(len(dac_bits)):
-        GPIO.output(dac_bits[i], bin_from_dec[i])
+    def set_number(self, number):
+        if not (0 <= number <= 255):
+            if self.verbose:
+                print("Число выходит за пределы диапазона (0–255). Устанавливаем 0.")
+            number = 0
 
-def set_voltage(self, voltage):
-    if not (0.0 <= voltage <= dynamic_range):
-        print(f"Напряжение выходит за динамический диапазон ЦАП (0.0 - {dynamic_range:.2f} B)")
-        print("Устанавливаем 0.0 В")
-        return 0
-    return int(voltage / dynamic_range * 255)
+        # Преобразуем в 8-битное двоичное представление (MSB — первый бит)
+        bin_repr = [int(bit) for bit in bin(number)[2:].zfill(8)]
+        
+        # Подаем биты на GPIO: gpio_bits[0] — старший бит
+        for i in range(len(self.gpio_bits)):
+            GPIO.output(self.gpio_bits[i], bin_repr[i])
+
+        if self.verbose:
+            print(f"Число на вход в ЦАП: {number}")
+            print(f"Биты: {bin_repr}")
+
+    def set_voltage(self, voltage):
+        if not (0.0 <= voltage <= self.dynamic_range):
+            if self.verbose:
+                print(f"Напряжение выходит за динамический диапазон ЦАП (0.0 – {self.dynamic_range:.3f} В)")
+                print("Устанавливаем 0.0 В")
+            voltage = 0.0
+
+        number = int(voltage / self.dynamic_range * 255)
+        self.set_number(number)
+
 
 if __name__ == "__main__":
     try:
