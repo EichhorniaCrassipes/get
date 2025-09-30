@@ -10,12 +10,11 @@ class PWM_DAC:
         GPIO.setmode(GPIO.BCM)
         GPIO.setup(self.gpio_pin, GPIO.OUT, initial=0)
 
-        # Создаём объект ШИМ с частотой и начальным duty cycle = 0
         self.pwm = GPIO.PWM(self.gpio_pin, self.pwm_frequency)
-        self.pwm.start(0)  # Запускаем ШИМ с 0% скважности
+        self.pwm.start(0) 
 
     def deinit(self):
-        self.pwm.stop()  # Останавливаем ШИМ
+        self.pwm.stop()
         GPIO.cleanup()
 
     def set_voltage(self, voltage):
@@ -25,7 +24,6 @@ class PWM_DAC:
                 print("Устанавливаем 0.0 В")
             voltage = 0.0
 
-        # Преобразуем напряжение в процент скважности
         duty_cycle = (voltage / self.dynamic_range) * 100
         self.pwm.ChangeDutyCycle(duty_cycle)
 
@@ -33,7 +31,7 @@ class PWM_DAC:
             print(f"Установлено напряжение: {voltage:.3f} В (скважность: {duty_cycle:.2f}%)")
 
 if __name__ == "__main__":
-    dac = None  # Инициализируем заранее, чтобы избежать NameError
+    dac = None  
     try:
         dac = PWM_DAC(gpio_pin=12, pwm_frequency=1000, dynamic_range=3.290, verbose=True)
 
