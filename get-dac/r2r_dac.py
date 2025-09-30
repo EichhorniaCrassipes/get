@@ -19,10 +19,8 @@ class R2R_DAC:
                 print("Число выходит за пределы диапазона (0–255). Устанавливаем 0.")
             number = 0
 
-        # Преобразуем в 8-битное двоичное представление (MSB — первый бит)
         bin_repr = [int(bit) for bit in bin(number)[2:].zfill(8)]
         
-        # Подаем биты на GPIO: gpio_bits[0] — старший бит
         for i in range(len(self.gpio_bits)):
             GPIO.output(self.gpio_bits[i], bin_repr[i])
 
