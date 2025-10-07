@@ -2,7 +2,7 @@ import numpy as np
 import time
 
 def get_sin_wave_amplitude(freq, time):
-    signal = np.sin(2*np.pi*freq*t)
+    signal = np.sin(2*np.pi*freq*time)
     shifted = signal+1
     normalized = shifted / 2.0
     return normalized
