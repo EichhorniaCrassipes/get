@@ -5,8 +5,8 @@ from math import *
 def get_triangle_amplitude(freq, time):
     x = time*freq
     signal = abs(2*(x - floor(x))-1)
-    shifted = signal+1
-    normalized = shifted / 2
+    shifted = signal
+    normalized = shifted
     return normalized
 
 def wait_for_sampling_period(sampling_frequency):

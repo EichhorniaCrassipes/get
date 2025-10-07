@@ -4,10 +4,10 @@ import time
 
 amplitude = 3.2         
 signal_frequency = 5    
-sampling_frequency = 1000 
+sampling_frequency = 100
 
 PWM_PIN = 12
-PWM_FREQUENCY = 1000 
+PWM_FREQUENCY = 1000
 
 if __name__ == "__main__":
     dac = None

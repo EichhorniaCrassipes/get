@@ -2,8 +2,8 @@ import mcp4725_driver as mcp
 import signal_generator as sg
 import time
 
-amplitude = 3.2       
-signal_frequency = 10   
+amplitude = 1       
+signal_frequency = 1  
 sampling_frequency = 1000
 
 
@@ -14,7 +14,7 @@ if __name__ == "__main__":
     try:
 
         dac = mcp.MCP4725(
-            dynamic_range=3.3,
+            dynamic_range=5.11,
             address=I2C_ADDRESS,
             verbose=False
         )
