@@ -3,7 +3,8 @@ import smbus
 class MCP4725:
     def __init__(self, dynamic_range, address=0x61, verbose=True):
         self.bus = smbus.SMBus(1)
-
+        print('hello world')
+        
         self.address = address
         self.wm = 0x00
         self.pds = 0x00
