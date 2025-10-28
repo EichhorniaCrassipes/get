@@ -1,3 +1,9 @@
 Some text 
 
 Some other new text idk
+
+>>> /bin/python3 /home/b03-505/Repositories/get/get-dac/r2r_dac.py
+  File "<stdin>", line 1
+    /bin/python3 /home/b03-505/Repositories/get/get-dac/r2r_dac.py
+    ^
+SyntaxError: invalid syntax
