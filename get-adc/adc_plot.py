@@ -17,7 +17,7 @@ def plot_sampling_period_hist(sampling_periods, max_period):
     plt.figure(figsize=(10, 6))
     plt.hist(sampling_periods)
     plt.grid(True, alpha=.3)
-    plt.xlim(0, max_period)
+    plt.xlim(0, 0.06)
     plt.xlabel("period, s")
     plt.ylabel("number of measurements")
     plt.title("Распределение периодов дискретизации измерений по времени на одно измерение")
