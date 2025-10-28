@@ -71,7 +71,5 @@ if __name__ == "__main__":
                 sleep(.25)
             except ValueError:
                 print("Вы не ввели число. Попробуйте снова!")
-        except KeyboardInterrupt:
-            print("Выключение...")
-        except Exception as e:
-            print(f"Ошибка")
+    except KeyboardInterrupt:
+        print("Выключение...")
